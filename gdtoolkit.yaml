@@ -1,0 +1,26 @@
+pre-commit:
+  parallel: false
+  jobs:
+    - name: formatter
+      group:
+        parallel: false
+        jobs:
+          - name: gdformat
+            glob: "*.gd"
+            run: gdformat {staged_files}
+            stage_fixed: true
+    - name: linter
+      group:
+        parallel: true
+        jobs:
+          - name: gdlint
+            glob: "*.gd"
+            run: gdlint {staged_files}
+          - name: gradon
+            glob: "*.gd"
+            run: |
+              gradon_result=$(gdradon cc {staged_files})
+              if echo "$gradon_result" | grep -qE "\- (C|D|E|F)"; then
+                exit 1
+              fi
+              echo "$gradon_result"
