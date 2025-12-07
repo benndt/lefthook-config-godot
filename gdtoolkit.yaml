@@ -1,3 +1,5 @@
+min_version: 2.0.0
+
 pre-commit:
   parallel: false
   jobs:
@@ -9,6 +11,7 @@ pre-commit:
             glob: "*.gd"
             run: gdformat {staged_files}
             stage_fixed: true
+
     - name: linter
       group:
         parallel: true
@@ -16,6 +19,7 @@ pre-commit:
           - name: gdlint
             glob: "*.gd"
             run: gdlint {staged_files}
+
           - name: gradon
             glob: "*.gd"
             run: |
