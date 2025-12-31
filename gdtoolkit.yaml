@@ -23,8 +23,13 @@ pre-commit:
           - name: gradon
             glob: "*.gd"
             run: |
+              error_levels="{gdradon_error_levels}"
+              if echo "${error_levels}" | grep -q "gdradon_error_levels"; then
+                error_levels="C|D|E|F"
+              fi
               gradon_result=$(gdradon cc {staged_files})
-              if echo "$gradon_result" | grep -qE "\- (C|D|E|F)"; then
-                exit 1
+              if echo "$gradon_result" | grep -qE "\- ($error_levels)"; then
+                echo "$gradon_result"
+              	exit 1
               fi
               echo "$gradon_result"

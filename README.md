@@ -7,7 +7,7 @@
 
 ## Usage
 
-Add the following to your lefthook configuration:
+Add the following to your `.lefthook.yaml`:
 
 ```yaml
 remotes:
@@ -15,4 +15,13 @@ remotes:
     refetch_frequency: 24h
     configs:
       - gdtoolkit.yaml
+```
+
+### Custom error levels
+
+To change the default error levels for gdradon you can define a lefthook template inside your `.lefthook.yaml`:
+
+```yaml
+templates:
+  gdradon_error_levels: B|C|D|E|F
 ```
