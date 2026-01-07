@@ -1,0 +1,13 @@
+min_version: 2.0.0
+
+pre-commit:
+  parallel: false
+  jobs:
+    - name: formatter
+      group:
+        parallel: false
+        jobs:
+          - name: gdformat
+            glob: "*.gd"
+            run: gdformat {staged_files}
+            stage_fixed: true

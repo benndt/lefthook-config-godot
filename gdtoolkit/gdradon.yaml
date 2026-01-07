@@ -1,0 +1,22 @@
+min_version: 2.0.0
+
+pre-commit:
+  parallel: false
+  jobs:
+    - name: linter
+      group:
+        parallel: true
+        jobs:
+          - name: gradon
+            glob: "*.gd"
+            run: |
+              error_levels=$(echo "{gdradon_error_levels}" | sed "s/gdradon_error_levels/C|D|E|F/" | tr -d '{}')
+
+              gradon_result=$(gdradon cc {staged_files})
+
+              if echo "$gradon_result" | grep -qE "\- ($error_levels)"; then
+                echo "$gradon_result"
+              	exit 1
+              fi
+
+              echo "$gradon_result"

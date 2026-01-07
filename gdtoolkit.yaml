@@ -1,35 +1,6 @@
 min_version: 2.0.0
 
-pre-commit:
-  parallel: false
-  jobs:
-    - name: formatter
-      group:
-        parallel: false
-        jobs:
-          - name: gdformat
-            glob: "*.gd"
-            run: gdformat {staged_files}
-            stage_fixed: true
-
-    - name: linter
-      group:
-        parallel: true
-        jobs:
-          - name: gdlint
-            glob: "*.gd"
-            run: gdlint {staged_files}
-
-          - name: gradon
-            glob: "*.gd"
-            run: |
-              error_levels="{gdradon_error_levels}"
-              if echo "${error_levels}" | grep -q "gdradon_error_levels"; then
-                error_levels="C|D|E|F"
-              fi
-              gradon_result=$(gdradon cc {staged_files})
-              if echo "$gradon_result" | grep -qE "\- ($error_levels)"; then
-                echo "$gradon_result"
-              	exit 1
-              fi
-              echo "$gradon_result"
+extends:
+  - /gdtoolkit/gdformat.yaml
+  - /gdtoolkit/gdlint.yaml
+  - /gdtoolkit/gdradon.yaml
