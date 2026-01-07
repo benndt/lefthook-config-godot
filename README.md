@@ -16,24 +16,14 @@ remotes:
 
 ### gdtoolkit
 
-Once you have installed [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit), you can either add the configuration for all gdtoolkit tools:
+Once you have installed [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit), you can either add the configuration for all gdtoolkit commands or add individual ones to your `remotes` config.
 
 ```yaml
-remotes:
-  # …
-    configs:
-      - gdtoolkit.yaml
-```
-
-or add individual ones:
-
-```yaml
-remotes:
-  # …
-    configs:
-      - gdtoolkit/gdformat.yaml
-      - gdtoolkit/gdlint.yaml
-      - gdtoolkit/gdradon.yaml
+configs:
+  - gdtoolkit.yaml
+  - gdtoolkit/gdformat.yaml
+  - gdtoolkit/gdlint.yaml
+  - gdtoolkit/gdradon.yaml
 ```
 
 #### Configs
