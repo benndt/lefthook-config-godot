@@ -1,0 +1,26 @@
+min_version: 2.0.0
+
+pre-commit:
+  parallel: false
+  jobs:
+    - name: linter
+      group:
+        parallel: true
+        jobs:
+          - name: lizard
+            glob: "*.gd"
+            run: |
+              cyclomatic_complexity=$(echo "{lizard_cyclomatic_complexity}" | sed "s/lizard_cyclomatic_complexity/10/" | tr -d '{}')
+              length=$(echo "{lizard_length}" | sed "s/lizard_length/30/" | tr -d '{}')
+              nloc=$(echo "{lizard_nloc}" | sed "s/lizard_nloc/20/" | tr -d '{}')
+              parameter_count=$(echo "{lizard_parameter_count}" | sed "s/lizard_parameter_count/4/" | tr -d '{}')
+              working_threads=$(echo "{lizard_working_threads}" | sed "s/lizard_working_threads/1/" | tr -d '{}')
+              exclude=$(echo "{lizard_exclude}" | sed "s/lizard_exclude/addons\/*/" | tr -d '{}')
+
+              lizard {staged_files} \
+                --Threshold cyclomatic_complexity=${cyclomatic_complexity} \
+                --Threshold length=${length} \
+                --Threshold nloc=${nloc} \
+                --Threshold parameter_count=${parameter_count} \
+                --working_threads ${working_threads} \
+                --exclude "${exclude}"

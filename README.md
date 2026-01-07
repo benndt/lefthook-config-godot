@@ -16,7 +16,8 @@ remotes:
 
 ### gdtoolkit
 
-Once you have installed [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit), you can either add the configuration for all gdtoolkit commands or add individual ones to your `remotes` config.
+Required tool: [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit).
+You can either add the configuration for all gdtoolkit commands or add individual ones to your `remotes` config.
 
 ```yaml
 configs:
@@ -26,11 +27,34 @@ configs:
   - gdtoolkit/gdradon.yaml
 ```
 
-#### Configs
+#### Customization
 
-To change the default error levels for gdradon you can define a lefthook template inside your `.lefthook.yaml`:
+To change the error levels for gdradon you can define the following `templates` inside your `.lefthook.yaml`:
 
 ```yaml
 templates:
   gdradon_error_levels: B|C|D|E|F
+```
+
+### Lizard
+
+Required tool: [Lizard](https://github.com/terryyin/lizard)
+
+```yaml
+configs:
+  - lizard.yaml
+```
+
+#### Customization
+
+To change the lizard command arguments you can define the following `templates` inside your `.lefthook.yaml`:
+
+```yaml
+templates:
+  lizard_cyclomatic_complexity: 15
+  lizard_length: 50
+  lizard_nloc: 40
+  lizard_parameter_count: 6
+  lizard_working_threads: 10
+  lizard_exclude: "src/addons/*"
 ```
