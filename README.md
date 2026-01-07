@@ -1,9 +1,6 @@
-# lefthook-config-godot
+# Godot Lefthook Configurations
 
-## Requirements
-
-- [lefthook](https://github.com/evilmartians/lefthook)
-- [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit)
+This repository provides [lefthook](https://github.com/evilmartians/lefthook) configurations for Godot projects.
 
 ## Usage
 
@@ -17,7 +14,25 @@ remotes:
       - gdtoolkit.yaml
 ```
 
-### Custom error levels
+### gdtoolkit
+
+Once you have installed [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit), you can either use the configuration for all gdtoolkit tools:
+
+```yaml
+    configs:
+      - gdtoolkit.yaml
+```
+
+or add individual ones:
+
+```yaml
+    configs:
+      - gdformat.yaml
+      - gdlint.yaml
+      - gdradon.yaml
+```
+
+#### Configs
 
 To change the default error levels for gdradon you can define a lefthook template inside your `.lefthook.yaml`:
 
