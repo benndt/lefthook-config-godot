@@ -1,6 +1,6 @@
 min_version: 2.0.0
 
 extends:
-  - /gdtoolkit/gdformat.yaml
-  - /gdtoolkit/gdlint.yaml
-  - /gdtoolkit/gdradon.yaml
+  - gdtoolkit/gdformat.yaml
+  - gdtoolkit/gdlint.yaml
+  - gdtoolkit/gdradon.yaml
