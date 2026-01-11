@@ -14,8 +14,8 @@ pre-commit:
               gdunit_report_folder=$(echo "{gdunit_report_folder}" | sed "s/gdunit_report_folder/.reports/" | tr -d '{}')
 
               ./addons/gdUnit4/runtest.sh \
-                --godot_binary ${godot_binary:-${GODOT_BIN}}
-                --add ${gdunit_test_folder}
-                --report-directory ${gdunit_report_folder}
-                --report-count 1
+                --godot_binary ${godot_binary:-${GODOT_BIN}} \
+                --add ${gdunit_test_folder} \
+                --report-directory ${gdunit_report_folder} \
+                --report-count 1 \
                 --continue
