@@ -47,7 +47,7 @@ configs:
 
 #### Customization
 
-To change the lizard command arguments you can define the following `templates` inside your `.lefthook.yaml`:
+To change the Lizard command arguments you can define the following `templates` inside your `.lefthook.yaml`:
 
 ```yaml
 templates:
@@ -57,4 +57,24 @@ templates:
   lizard_parameter_count: 6
   lizard_working_threads: 10
   lizard_exclude: "src/addons/*"
+```
+
+### GdUnit4
+
+Required tool: [gdUnit4](https://github.com/godot-gdunit-labs/gdUnit4)
+
+```yaml
+configs:
+  - gdunit4.yaml
+```
+
+#### Customization
+
+To change the GdUnit4 command arguments you can define the following `templates` inside your `.lefthook.yaml`:
+
+```yaml
+templates:
+  godot_binary: "/path/to/godot"
+  gdunit_test_folder: "tests"
+  gdunit_report_folder: ".reports"
 ```
