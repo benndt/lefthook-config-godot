@@ -9,12 +9,12 @@ pre-commit:
           - name: gdunit
             glob: "*.gd"
             run: |
-              godot_binary=$(echo "{godot_binary}" | sed "s/godot_binary/${GODOT_BIN}/" | tr -d '{}')
+              godot_binary=$(echo "{godot_binary}" | sed "s/godot_binary//" | tr -d '{}')
               gdunit_test_folder=$(echo "{gdunit_test_folder}" | sed "s/gdunit_test_folder/tests/" | tr -d '{}')
               gdunit_report_folder=$(echo "{gdunit_report_folder}" | sed "s/gdunit_report_folder/.reports/" | tr -d '{}')
 
               ./addons/gdUnit4/runtest.sh \
-                --godot_binary ${godot_binary}
+                --godot_binary ${godot_binary:-${GODOT_BIN}}
                 --add ${gdunit_test_folder}
                 --report-directory ${gdunit_report_folder}
                 --report-count 1
